@@ -27,7 +27,10 @@ public class SceneController {
         loadScene(xmlUrl);
     }
 
-    public static void toGameField() throws IOException {}
+    public static void toGameField() throws IOException {
+        var xmlUrl = SceneController.class.getResource("/scenes/GameField.fxml");
+        loadScene(xmlUrl);
+    }
 
     public static void toGameResults() throws IOException {}
 
