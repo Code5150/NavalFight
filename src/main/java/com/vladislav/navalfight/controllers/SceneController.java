@@ -6,11 +6,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.io.IOException;
 import java.net.URL;
 
 public class SceneController {
+    private static final String HOST = "rmi://localhost";
+    private static final int PORT = 1099;
+    private static final String METHODS_NAME = "FightCalculations";
+
     protected static Stage appStage;
+    protected static Context context;
     protected static FightCalculations serverMethods;
 
     public static Stage getAppStage() {
@@ -56,5 +64,14 @@ public class SceneController {
         Parent root = loader.load();
         appStage.setScene(new Scene(root));
         appStage.show();
+    }
+
+    private static void initRmiConnection() throws NamingException {
+        context = new InitialContext();
+
+        var e = context.list(HOST);
+        while (e.hasMoreElements()) System.out.println(e.nextElement().getName());
+
+        serverMethods = (FightCalculations) context.lookup(HOST + ":" + PORT + "/" + METHODS_NAME);
     }
 }
