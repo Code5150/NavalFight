@@ -1,5 +1,6 @@
 package com.vladislav.navalfight.controllers;
 
+import com.vladislav.navalfight.rmi.FightCalculations;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,12 +11,24 @@ import java.net.URL;
 
 public class SceneController {
     protected static Stage appStage;
+    protected static FightCalculations serverMethods;
 
     public static Stage getAppStage() {
         return appStage;
     }
+    public static void setStageWidth(double w) {
+        appStage.setWidth(w);
+    }
+    public static void setStageHeight(double h) {
+        appStage.setHeight(h);
+    }
+
     public static void setAppStage(Stage appStage) {
         SceneController.appStage = appStage;
+    }
+
+    public static FightCalculations getServerMethods() {
+        return serverMethods;
     }
 
     public static void toMainMenu() throws IOException {
@@ -32,7 +45,10 @@ public class SceneController {
         loadScene(xmlUrl);
     }
 
-    public static void toGameResults() throws IOException {}
+    public static void toGameResults() throws IOException {
+        var xmlUrl = SceneController.class.getResource("/scenes/GameResults.fxml");
+        loadScene(xmlUrl);
+    }
 
     private static void loadScene(URL xmlUrl) throws IOException {
         var loader = new FXMLLoader();
