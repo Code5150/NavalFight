@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -13,13 +10,33 @@
     <Label fx:id="mainTitle" alignment="CENTER" text="Параметры"/>
     <HBox alignment="CENTER" spacing="10">
         <Label fx:id="sizeTitle" text="Размер стороны поля"/>
-        <Slider fx:id="sizeSlider" min="10" max="30"/>
+        <Slider fx:id="sizeSlider" min="10" max="30" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
         <Label fx:id="sizeValue" text="10"/>
     </HBox>
     <HBox alignment="CENTER" spacing="10">
         <Label fx:id="shotsTitle" text="Количество выстрелов"/>
-        <Slider fx:id="shotsSlider" min="20" max="900"/>
+        <Slider fx:id="shotsSlider" min="20" max="900" majorTickUnit="1" minorTickCount="0" />
         <Label fx:id="shotsValue" text="20"/>
+    </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Label fx:id="ships4Title" text="Количество кораблей размера 4"/>
+        <Slider fx:id="ships4Slider" min="1" max="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+        <Label fx:id="ships4Value" text="1"/>
+    </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Label fx:id="ships3Title" text="Количество кораблей размера 3"/>
+        <Slider fx:id="ships3Slider" min="1" max="2" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+        <Label fx:id="ships3Value" text="1"/>
+    </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Label fx:id="ships2Title" text="Количество кораблей размера 2"/>
+        <Slider fx:id="ships2Slider" min="1" max="3" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+        <Label fx:id="ships2Value" text="1"/>
+    </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Label fx:id="ships1Title" text="Количество кораблей размера 1"/>
+        <Slider fx:id="ships1Slider" min="1" max="4" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+        <Label fx:id="ships1Value" text="1"/>
     </HBox>
     <HBox alignment="CENTER" spacing="10">
         <Button fx:id="menuButton" text="В главное меню" onAction="#menuButtonClicked"/>

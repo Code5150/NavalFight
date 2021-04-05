@@ -9,11 +9,19 @@ import java.io.IOException;
 import java.net.URL;
 
 public class SceneController {
+
     protected static Stage appStage;
 
     public static Stage getAppStage() {
         return appStage;
     }
+    public static void setStageWidth(double w) {
+        appStage.setWidth(w);
+    }
+    public static void setStageHeight(double h) {
+        appStage.setHeight(h);
+    }
+
     public static void setAppStage(Stage appStage) {
         SceneController.appStage = appStage;
     }
@@ -27,9 +35,15 @@ public class SceneController {
         loadScene(xmlUrl);
     }
 
-    public static void toGameField() throws IOException {}
+    public static void toGameField() throws IOException {
+        var xmlUrl = SceneController.class.getResource("/scenes/GameField.fxml");
+        loadScene(xmlUrl);
+    }
 
-    public static void toGameResults() throws IOException {}
+    public static void toGameResults() throws IOException {
+        var xmlUrl = SceneController.class.getResource("/scenes/GameResults.fxml");
+        loadScene(xmlUrl);
+    }
 
     private static void loadScene(URL xmlUrl) throws IOException {
         var loader = new FXMLLoader();
