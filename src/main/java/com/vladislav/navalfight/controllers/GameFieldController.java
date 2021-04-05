@@ -11,16 +11,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 public class GameFieldController {
-    @FXML
-    private Button menuButton;
     @FXML
     private VBox gridContainer;
     @FXML
     private TilePane gameTiles;
     @FXML
-    private Label shotsLeft, shipsShot;
+    private Label shotsNum, targetsHitNum;
 
     private static int size = 10;
     private static final int gap = 1;
@@ -32,21 +31,27 @@ public class GameFieldController {
 
     private final Rectangle[][] tilesArray = new Rectangle[size][size];
 
-    public void initialize(){
-        /*gameGrid.setWidth(300);
-        gameGrid.setHeight(300);
-
-        gameGrid.setStyle("-fx-border-color: black; -fx-border-width: 3;");
-        gridContainer.setMaxWidth(300);
-        var gc = gameGrid.getGraphicsContext2D();
-        doDrawing(gc);*/
+    public void initialize() throws RemoteException {
         gameTiles.setPrefColumns(size);
         gameTiles.setPrefColumns(size);
         gameTiles.setVgap(gap);
         gameTiles.setHgap(gap);
 
-        gridContainer.setMaxWidth((size+1)*(cellDim + gap));
-        gridContainer.setPrefHeight((size+1)*(cellDim + gap));
+        double dim = (size+1)*(cellDim + gap);
+
+        gridContainer.setMaxWidth(dim);
+        gridContainer.setPrefHeight(dim);
+
+        System.out.println(dim + 100);
+
+        SceneController.getAppStage().setWidth(dim + 200);
+        SceneController.getAppStage().setHeight(dim + 150);
+
+        FieldCell.setShots(shotsNum);
+        FieldCell.setTargets(targetsHitNum);
+
+        shotsNum.setText(Integer.toString(RmiController.getServerMethods().shotsNum()));
+        targetsHitNum.setText("0");
 
         for (int i = 0; i < tilesArray.length; i++){
             for (int j = 0; j < tilesArray[i].length; j++){
@@ -55,28 +60,6 @@ public class GameFieldController {
             }
         }
     }
-
-    /*private void doDrawing(GraphicsContext gc) {
-        //Круги
-        *//*gc.setStroke(Color.FORESTGREEN.brighter());
-        gc.setLineWidth(5);
-        gc.strokeOval(30, 30, 80, 80);
-        gc.setFill(Color.FORESTGREEN);
-        gc.fillOval(130, 30, 80, 80);*//*
-        gc.setFill(Color.GRAY);
-        gc.setStroke(Color.FORESTGREEN.brighter());
-        gc.setLineWidth(2);
-        gc.beginPath();
-        gc.moveTo(30.5, 30.5);
-        gc.lineTo(150.5, 30.5);
-        gc.lineTo(150.5, 150.5);
-        gc.lineTo(30.5, 30.5);
-        gc.stroke();
-    }
-
-    private void drawGrid(GraphicsContext gc) {
-
-    }*/
 
     @FXML
     public void menuButtonClicked() {

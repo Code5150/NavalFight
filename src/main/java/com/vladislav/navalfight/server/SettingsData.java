@@ -1,4 +1,4 @@
-package com.vladislav.navalfight.rmi;
+package com.vladislav.navalfight.server;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

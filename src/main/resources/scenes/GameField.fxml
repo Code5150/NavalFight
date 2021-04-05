@@ -12,8 +12,10 @@
         <TilePane fx:id="gameTiles"/>
     </VBox>
     <HBox alignment="CENTER" spacing="10">
-        <Label fx:id="shotsLeft" text="Кол-во выстрелов: 000"/>
-        <Label fx:id="shipsShot" text="Целей поражено: 00"/>
+        <Label fx:id="shotsLeft" text="Кол-во выстрелов:" />
+        <Label fx:id="shotsNum" text="000" />
+        <Label fx:id="targetsHitLabel" text="Целей поражено:"/>
+        <Label fx:id="targetsHitNum" text="00" />
         <Button fx:id="menuButton" text="В главное меню" onAction="#menuButtonClicked"/>
     </HBox>
 </VBox>
